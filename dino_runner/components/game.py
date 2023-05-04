@@ -2,7 +2,7 @@ import pygame
 
 from pygame import mixer
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, MUSIC_THEME,  DEFAULT_TYPE
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, MUSIC_THEME, DEFAULT_TYPE
 
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.ranking import Ranking
@@ -30,6 +30,8 @@ class Game:
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
+        self.x_pos_cloud = 1100
+        self.y_pos_cloud = 100
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
         self.power_up_manager = PowerUpManager()
@@ -92,6 +94,13 @@ class Game:
             self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
+        cloud_img = CLOUD.get_width()
+        self.screen.blit(CLOUD, (cloud_img + self.x_pos_cloud, self.y_pos_cloud))
+        self.x_pos_bg = 0
+        self.x_pos_cloud -= self.game_speed // 2
+        self.screen.blit(CLOUD, (cloud_img + self.x_pos_cloud, self.y_pos_cloud))
+        if self.x_pos_cloud < -cloud_img:
+            self.x_pos_cloud = SCREEN_WIDTH
 
     def draw_score(self):
         draw_message_component(

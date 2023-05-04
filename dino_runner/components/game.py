@@ -5,6 +5,7 @@ from pygame import mixer
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, MUSIC_THEME,  DEFAULT_TYPE
 
 from dino_runner.components.dinosaur import Dinosaur
+from dino_runner.components.ranking import Ranking
 
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 
@@ -121,10 +122,20 @@ class Game:
             if event.type == pygame.QUIT:
                 self.playing = False
                 self.running = False
+
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                    self.music_play(MUSIC_THEME)
                    self.run()
+
+                elif event.key == pygame.K_TAB:
+                    print("Estou do Ranking")
+
+                elif event.key == pygame.K_e:
+                    ranking = Ranking()
+                    ranking.save("Teste", self.score)
+                    print("Enviado para o Ranking!")
+
                 elif event.key == pygame.K_BACKSPACE:
                     pygame.quit()
 
@@ -140,9 +151,14 @@ class Game:
                 pos_y_center=half_screen_height - 40
             )
             draw_message_component(
+                "[TAB] - Ranking",
+                self.screen,
+                pos_y_center= half_screen_height
+            )
+            draw_message_component(
                 "[BACKSPACE] - Sair do Jogo",
                 self.screen,
-                pos_y_center= half_screen_height + 200
+                pos_y_center= half_screen_height + 50
             )
         else:
             draw_message_component(
@@ -159,6 +175,11 @@ class Game:
                 "[Enter] - Reiniciar o Jogo",
                 self.screen,
                 pos_y_center= half_screen_height + 140
+            )
+            draw_message_component(
+                "[E] - Enviar Save",
+                self.screen,
+                pos_y_center= half_screen_height + 170
             )
             draw_message_component(
                 "[BACKSPACE] - Sair do Jogo",

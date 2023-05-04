@@ -7,7 +7,7 @@ SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1100
 FPS = 30
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
-
+API_URL = "https://64540a1ae9ac46cedf3642b7.mockapi.io/api/v1/ranking"
 
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
@@ -62,10 +62,10 @@ BIRD = [
     pygame.image.load(os.path.join(IMG_DIR, "Bird/Bird2.png")),
 ]
 
-MUSIC_THEME = "Dino-MOD2-Elias/dino_runner/assets/Music/music_theme.mp3"
-JUMP = "Dino-MOD2-Elias/dino_runner/assets/Music/jump.mp3"
-EAGLE = "Dino-MOD2-Elias/dino_runner/assets/Music/eagle.mp3"
-SHIELD_SOUND = "Dino-MOD2-Elias/dino_runner/assets/Music/shield_sound.wav"
+MUSIC_THEME = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/music_theme.mp3"
+JUMP = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/jump.mp3"
+EAGLE = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/eagle.mp3"
+SHIELD_SOUND = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/shield_sound.wav"
 
 
 

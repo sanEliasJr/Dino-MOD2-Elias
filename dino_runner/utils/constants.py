@@ -61,6 +61,13 @@ BIRD = [
     pygame.image.load(os.path.join(IMG_DIR, "Bird/Bird2.png")),
 ]
 
+MUSIC_THEME = "Dino-MOD2-Elias/dino_runner/assets/Music/music_theme.mp3"
+JUMP = "Dino-MOD2-Elias/dino_runner/assets/Music/jump.mp3"
+EAGLE = "Dino-MOD2-Elias/dino_runner/assets/Music/eagle.mp3"
+SHIELD_SOUND = "Dino-MOD2-Elias/dino_runner/assets/Music/shield_sound.wav"
+
+
+
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))

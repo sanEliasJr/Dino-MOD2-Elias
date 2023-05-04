@@ -1,7 +1,9 @@
 import random
 import pygame
+from pygame import mixer
 
 from dino_runner.components.powerups.shield import Shield
+from dino_runner.utils.constants import SHIELD_SOUND
 
 class PowerUpManager:
     def __init__(self):
@@ -16,14 +18,16 @@ class PowerUpManager:
     def update(self, score, game_speed, player):
             self.generate_power_up(score)
             for power_up in self.power_ups:
-                 power_up.update(game_speed, self.power_ups)
-                 if player.dino_rect.colliderect(power_up.rect):
-                      power_up.start_time = pygame.time.get_ticks()
-                      player.shield = True
-                      player.has_power_up = True
-                      player.type = power_up.type
-                      player.power_up_time = power_up.start_time + (power_up.duration * 1000)
-                      self.power_ups.remove(power_up)
+                power_up.update(game_speed, self.power_ups)
+                eagle_sound = mixer.Sound(SHIELD_SOUND)
+                eagle_sound.play()
+                if player.dino_rect.colliderect(power_up.rect):
+                     power_up.start_time = pygame.time.get_ticks()
+                     player.shield = True
+                     player.has_power_up = True
+                     player.type = power_up.type
+                     player.power_up_time = power_up.start_time + (power_up.duration * 1000)
+                     self.power_ups.remove(power_up)
     
     def draw(self, screen):
         for power_up in self.power_ups:

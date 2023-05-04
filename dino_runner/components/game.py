@@ -1,6 +1,8 @@
 import pygame
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE
+from pygame import mixer
+
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, MUSIC_THEME,  DEFAULT_TYPE
 
 from dino_runner.components.dinosaur import Dinosaur
 
@@ -18,6 +20,7 @@ class Game:
 
     def __init__(self):
         pygame.init()
+        mixer.init()
         pygame.display.set_caption(TITLE)
         pygame.display.set_icon(ICON)
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -121,6 +124,7 @@ class Game:
                 self.playing = False
                 self.running = False
             elif event.type == pygame.KEYDOWN:
+                self.music_play(MUSIC_THEME)
                 self.run()
 
     def show_menu(self):
@@ -152,5 +156,9 @@ class Game:
         pygame.display.flip()
         self.handle_events_on_menu()
 
+    def music_play(self, music):
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load(music)
+        pygame.mixer.music.play(-1)
 
         

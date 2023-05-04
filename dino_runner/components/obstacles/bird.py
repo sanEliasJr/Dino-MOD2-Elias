@@ -1,4 +1,5 @@
-from dino_runner.utils.constants import BIRD
+from pygame import mixer
+from dino_runner.utils.constants import BIRD, EAGLE
 from dino_runner.components.obstacles.obstacle import Obstacle
 
 
@@ -14,3 +15,6 @@ class Bird(Obstacle):
 
         if self.step_index >= 10:
             self.step_index = 0
+
+        eagle_sound = mixer.Sound(EAGLE)
+        eagle_sound.play()

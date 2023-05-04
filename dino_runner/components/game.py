@@ -99,6 +99,8 @@ class Game:
         self.x_pos_bg = 0
         self.x_pos_cloud -= self.game_speed // 2
         self.screen.blit(CLOUD, (cloud_img + self.x_pos_cloud, self.y_pos_cloud))
+        self.x_pos_cloud -= self.game_speed // 2
+        self.screen.blit(CLOUD, (cloud_img + self.x_pos_cloud, self.y_pos_cloud))
         if self.x_pos_cloud < -cloud_img:
             self.x_pos_cloud = SCREEN_WIDTH
 

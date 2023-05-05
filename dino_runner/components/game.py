@@ -2,7 +2,7 @@ import pygame
 
 from pygame import mixer
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, MUSIC_THEME, DEFAULT_TYPE
+from dino_runner.utils.constants import BG, BG2, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, MUSIC_THEME, DEFAULT_TYPE
 
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.ranking import Ranking
@@ -29,7 +29,7 @@ class Game:
         self.score = 0
         self.death_count = 0
         self.game_speed = 20
-        self.x_pos_bg = 0
+        self.x_pos_bg = 1280
         self.y_pos_bg = 380
         self.x_pos_cloud = 1100
         self.y_pos_cloud = 100
@@ -83,8 +83,7 @@ class Game:
     #Renderiza as jogo de modo geral(Visulização do game)
     def draw(self):
         self.clock.tick(FPS)
-        self.screen.fill((255, 255, 255))
-        self.draw_background()
+        self.screen.blit(BG2,(0,0))
         self.draw_score()
         self.draw_power_up_time()
         self.player.draw(self.screen)

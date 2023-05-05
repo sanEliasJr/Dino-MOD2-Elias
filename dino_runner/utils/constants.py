@@ -3,8 +3,8 @@ import os
 
 # Global Constants
 TITLE = "Dino Runner"
-SCREEN_HEIGHT = 600
-SCREEN_WIDTH = 1100
+SCREEN_HEIGHT = 712
+SCREEN_WIDTH = 1280
 FPS = 30
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 API_URL = "https://64540a1ae9ac46cedf3642b7.mockapi.io/api/v1/ranking"
@@ -75,6 +75,7 @@ SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
+BG2 = pygame.image.load(os.path.join(IMG_DIR, 'Other/floresta_background.png'))
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 

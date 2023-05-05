@@ -62,7 +62,8 @@ BIRD = [
     pygame.image.load(os.path.join(IMG_DIR, "Bird/Bird2.png")),
 ]
 
-# Musicas 
+# Mudou:
+    #   Novas Musicas
 MUSIC_THEME = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/music_theme.mp3"
 JUMP = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/jump.wav"
 EAGLE = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/eagle.wav"
@@ -70,15 +71,18 @@ SHIELD_SOUND = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino
 GAME_OVER = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/game_over.wav"
 HAMMER_SOUND = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/hammer.mp3"
 
+# Mudou:
+    #  Design da nuvem e do shild 
+
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 
-BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
-BG2 = pygame.image.load(os.path.join(IMG_DIR, 'Other/floresta_background.png'))
+# Alteramos a imagem de fundo
+BG2 = pygame.image.load(os.path.join(IMG_DIR, 'Other/floresta_background.png')) 
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
-HAMMER_TYPE = "hammer"
+HAMMER_TYPE = "hammer" # Declaramos o Hammer

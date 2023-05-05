@@ -10,6 +10,8 @@ class ObstacleManager:
     def init(self):
         self.obstacles = []
 
+    # Mudou:
+    #   Acrescentou o efeito de game over 
     def update(self, game):
         obstacle_type = [
             Cactus(),

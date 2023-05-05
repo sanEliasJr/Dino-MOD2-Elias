@@ -6,6 +6,9 @@ from dino_runner.utils.constants import SCREEN_WIDTH
 
  
 class PowerUp(Sprite):
+    # Mudou:
+    #   O posicionamento para se adequar a tela
+    #   Design do Projeto em si 
     def __init__(self, image, type):
         self.image = image
         self.type = type

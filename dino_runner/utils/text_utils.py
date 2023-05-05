@@ -4,7 +4,7 @@ from dino_runner.utils.constants import SCREEN_HEIGHT, SCREEN_WIDTH
 
 FONT_COLOR = (0, 0, 0)
 FONT_SIZE = 22
-FONT_STYLE = "Dino-MOD2-Elias/dino_runner/assets/Fonts/Gameplay.ttf"
+FONT_STYLE = "Dino-MOD2-Elias/dino_runner/assets/Fonts/Gameplay.ttf" # Mudamos o estilo da fonte
 
 
 def draw_message_component(

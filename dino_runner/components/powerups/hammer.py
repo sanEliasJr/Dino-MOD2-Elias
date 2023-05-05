@@ -2,6 +2,9 @@ from dino_runner.utils.constants import HAMMER, HAMMER_TYPE, HAMMER_SOUND
 
 from dino_runner.components.powerups.power_up import PowerUp
 
+
+#Criação da Classe Hammer(Martelo)
+#Parecida com a classe Shield
 class Hammer(PowerUp):
 
     def __init__(self):

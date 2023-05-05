@@ -5,7 +5,9 @@ from dino_runner.components.obstacles.obstacle import Obstacle
 
 
 class Cactus(Obstacle):
-
+    # Mudou:
+    #   O posicionamento para se adequar a tela
+    #   Design do Projeto em si 
     CACTUS = [
         (LARGE_CACTUS, 490),
         (SMALL_CACTUS, 515),

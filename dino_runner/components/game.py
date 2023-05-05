@@ -2,7 +2,7 @@ import pygame
 
 from pygame import mixer
 
-from dino_runner.utils.constants import BG, BG2, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, MUSIC_THEME, DEFAULT_TYPE
+from dino_runner.utils.constants import BG2, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, MUSIC_THEME, DEFAULT_TYPE
 
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.ranking import Ranking
@@ -26,14 +26,13 @@ class Game:
         self.clock = pygame.time.Clock() 
         self.playing = False
         self.running = False
-        self.is_music_play = False
         self.score = 0
         self.death_count = 0
         self.game_speed = 20
-        self.x_pos_bg = 1280
-        self.y_pos_bg = 380
-        self.x_pos_cloud = 1280
-        self.y_pos_cloud = 100
+        self.x_pos_bg = 1280 # Define a posição do background na tela
+        self.y_pos_bg = 380 # Define a posição do background na tela
+        self.x_pos_cloud = 1280 # Define a posição da bola de fogo na tela
+        self.y_pos_cloud = 100 # Define a posição da bola de fogo na tela
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
         self.power_up_manager = PowerUpManager()
@@ -84,17 +83,17 @@ class Game:
     #Renderiza as jogo de modo geral(Visulização do game)
     def draw(self):
         self.clock.tick(FPS)
-        self.screen.blit(BG2,(0,0))
+        self.screen.blit(BG2,(0,0)) # Altera para a imagem(background) de fundo
         self.draw_score()
         self.draw_power_up_time()
-        self.draw_background()
+        self.draw_background() # Responsvel para animação de fundo EX: bola de fogo
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
         self.power_up_manager.draw(self.screen)
         pygame.display.update()
         pygame.display.flip()
 
-    #Renderiza(Cria) o fundo do game
+    #Renderiza animação dos componentes do background Ex: Bola de Fogo
     def draw_background(self):
         cloud_img = CLOUD.get_width()
         self.screen.blit(CLOUD, (cloud_img + self.x_pos_cloud, self.y_pos_cloud))
@@ -105,6 +104,8 @@ class Game:
             self.x_pos_cloud = SCREEN_WIDTH
 
     #Criação da visualização do score em tela
+    # Mudou:
+    #   Fonte, Cor, Posição e Tamanho
     def draw_score(self):
         draw_message_component(
             f"Pontos: {self.score}",
@@ -114,7 +115,10 @@ class Game:
             font_size = 35,
             font_color=(0,128,0)
         )
+
     #Criação da visualização do time de poder em tela
+    # Mudou:
+    #   Fonte, Cor, Posição e Tamanho
     def draw_power_up_time(self):
         if self.player.has_power_up:
             time_to_show = round(
@@ -132,9 +136,11 @@ class Game:
                 self.player.has_power_up = False
                 self.player.type = DEFAULT_TYPE
 
+
     #Lida com os eventos da entrada do usuario no game
     # Ex: Menu
-
+    # Mudou:
+    #   Local da chamada da musica - Criando uma Função para isso
     def handle_events_on_menu(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -143,11 +149,11 @@ class Game:
 
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN: # Se ele pressionar enter ele vai iniciar o jogo                    
-                       self.music_play(MUSIC_THEME)
-                       self.run()
+                    self.music_play(MUSIC_THEME)
+                    self.run()
 
                 elif event.key == pygame.K_TAB: # Se ele pressionar TAB ele mostra o Ranking
-                    print("Estou do Ranking")
+                    self.ranking()
 
                 elif event.key == pygame.K_e: # Se ele pressionar a tecla 'E' ele envia o score do jogador para o ranking 
                     ranking = Ranking()
@@ -210,6 +216,47 @@ class Game:
         pygame.display.flip()
         self.handle_events_on_menu()
 
+
+    # Função para cuidar da criação da segunda tela, Ranking.
+    def ranking(self):
+        pygame.display.set_caption("Ranking")
+        while True:
+
+            #Instancia a classe Ranking - Responsavel pela requisição http na API MOCK API
+            response = Ranking()
+            data = response.get()
+            data_json = data.json()
+
+            # Criação da tela de Ranking 
+            self.screen.fill("black")
+
+            draw_message_component(
+                "Ranking",
+                self.screen,
+                (255,255,255),
+                pos_y_center= 100
+            )
+
+            for i in data_json:
+                for y in range(0,len(data_json)):
+                    draw_message_component(
+                        f"{i[y]}   {i[y]}",
+                        self.screen,
+                        pos_y_center= 200*y,
+                        pos_x_center= 500,
+                        font_color= (255,255,255)
+                    )
+
+
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                elif event.type == pygame.K_TAB:
+                    self.show_menu()
+
+            pygame.display.update()
+       
     # Função para inicializar os efeitos sonoros.
     def music_play(self, music): 
         pygame.mixer.music.stop()

@@ -9,6 +9,9 @@ DUCK_IMG = { DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD, HAMMER_TYPE:DUC
 JUMP_IMG = { DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD, HAMMER_TYPE:JUMPING_HAMMER}
 RUN_IMG = { DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD, HAMMER_TYPE: RUNNING_HAMMER}
 
+# Mudou:
+    #   O posicionamento para se adequar a tela (Enquadramento)
+
 X_POS = 80
 Y_POS = 500
 Y_POS_DUCK = 510
@@ -68,11 +71,12 @@ class Dinosaur(Sprite):
         self.dino_rect.x = X_POS
         self.dino_rect.y = Y_POS
         self.step_index += 1
-    
+    # Mudou:
+    #   Tamanho do pulo
     def jump(self):
         self.image = JUMP_IMG[self.type]
         if self.dino_jump:
-            self.dino_rect.y -= self.jump_vel * 5
+            self.dino_rect.y -= self.jump_vel * 5 #Pulo aumentado em 5 vezes
             self.jump_vel -= 0.8
 
         if self.jump_vel < -JUMP_VEL:

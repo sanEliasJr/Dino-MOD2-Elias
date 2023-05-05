@@ -15,3 +15,4 @@ class Ranking:
         }
         response = requests.post(API_URL, data)
         return response
+    

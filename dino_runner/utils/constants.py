@@ -62,6 +62,7 @@ BIRD = [
     pygame.image.load(os.path.join(IMG_DIR, "Bird/Bird2.png")),
 ]
 
+# Musicas 
 MUSIC_THEME = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/music_theme.mp3"
 JUMP = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/jump.mp3"
 EAGLE = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/eagle.mp3"

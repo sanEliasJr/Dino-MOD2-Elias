@@ -3,14 +3,15 @@ import pygame
 from pygame.sprite import Sprite
 from pygame import mixer
 
-from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING, DEFAULT_TYPE, SHIELD_TYPE, DUCKING_SHIELD, JUMPING_SHIELD, JUMP, RUNNING_SHIELD
+from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING, DEFAULT_TYPE, SHIELD_TYPE, HAMMER_TYPE, DUCKING_HAMMER, JUMPING_HAMMER, RUNNING_HAMMER, DUCKING_SHIELD, JUMPING_SHIELD, JUMP, RUNNING_SHIELD
 
-DUCK_IMG = { DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD}
-JUMP_IMG = { DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD}
-RUN_IMG = { DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD}
+DUCK_IMG = { DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD, HAMMER_TYPE:DUCKING_HAMMER}
+JUMP_IMG = { DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD, HAMMER_TYPE:JUMPING_HAMMER}
+RUN_IMG = { DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD, HAMMER_TYPE: RUNNING_HAMMER}
+
 X_POS = 80
 Y_POS = 500
-Y_POS_DUCK = 540
+Y_POS_DUCK = 510
 JUMP_VEL = 8.5
 
 class Dinosaur(Sprite):
@@ -71,7 +72,7 @@ class Dinosaur(Sprite):
     def jump(self):
         self.image = JUMP_IMG[self.type]
         if self.dino_jump:
-            self.dino_rect.y -= self.jump_vel * 4
+            self.dino_rect.y -= self.jump_vel * 5
             self.jump_vel -= 0.8
 
         if self.jump_vel < -JUMP_VEL:

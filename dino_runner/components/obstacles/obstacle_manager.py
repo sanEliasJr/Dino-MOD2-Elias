@@ -3,6 +3,7 @@ import random
 
 from dino_runner.components.obstacles.cactus import Cactus
 from dino_runner.components.obstacles.bird import Bird
+from dino_runner.utils.constants import GAME_OVER
 
 
 class ObstacleManager:
@@ -24,6 +25,8 @@ class ObstacleManager:
                 if not game.player.has_power_up:
                     pygame.time.delay(500)
                     game.playing = False
+                    game_over = pygame.mixer.Sound(GAME_OVER)
+                    game_over.play()
                     game.death_count += 1
                     break
                 else:

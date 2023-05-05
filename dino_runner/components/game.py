@@ -26,12 +26,13 @@ class Game:
         self.clock = pygame.time.Clock() 
         self.playing = False
         self.running = False
+        self.is_music_play = False
         self.score = 0
         self.death_count = 0
         self.game_speed = 20
         self.x_pos_bg = 1280
         self.y_pos_bg = 380
-        self.x_pos_cloud = 1100
+        self.x_pos_cloud = 1280
         self.y_pos_cloud = 100
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
@@ -86,6 +87,7 @@ class Game:
         self.screen.blit(BG2,(0,0))
         self.draw_score()
         self.draw_power_up_time()
+        self.draw_background()
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
         self.power_up_manager.draw(self.screen)
@@ -94,18 +96,9 @@ class Game:
 
     #Renderiza(Cria) o fundo do game
     def draw_background(self):
-        image_width = BG.get_width()
-        self.screen.blit(BG, (self.x_pos_bg, self.y_pos_bg))
-        self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
-        if self.x_pos_bg <= -image_width:
-            self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
-            self.x_pos_bg = 0
-        self.x_pos_bg -= self.game_speed
         cloud_img = CLOUD.get_width()
         self.screen.blit(CLOUD, (cloud_img + self.x_pos_cloud, self.y_pos_cloud))
-        self.x_pos_bg = 0
-        self.x_pos_cloud -= self.game_speed // 2
-        self.screen.blit(CLOUD, (cloud_img + self.x_pos_cloud, self.y_pos_cloud))
+        self.x_pos_bg = -10
         self.x_pos_cloud -= self.game_speed // 2
         self.screen.blit(CLOUD, (cloud_img + self.x_pos_cloud, self.y_pos_cloud))
         if self.x_pos_cloud < -cloud_img:
@@ -117,7 +110,9 @@ class Game:
             f"Pontos: {self.score}",
             self.screen,
             pos_x_center=1000,
-            pos_y_center=50
+            pos_y_center=50,
+            font_size = 35,
+            font_color=(0,128,0)
         )
     #Criação da visualização do time de poder em tela
     def draw_power_up_time(self):
@@ -130,7 +125,8 @@ class Game:
                     self.screen,
                     font_size=18,
                     pos_x_center=500,
-                    pos_y_center=40
+                    pos_y_center=40,
+                    font_color=(0,128,0)
                 )
             else:
                 self.player.has_power_up = False
@@ -146,9 +142,9 @@ class Game:
                 self.running = False
 
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN: # Se ele pressionar enter ele vai iniciar o jogo 
-                   self.music_play(MUSIC_THEME)
-                   self.run()
+                if event.key == pygame.K_RETURN: # Se ele pressionar enter ele vai iniciar o jogo                    
+                       self.music_play(MUSIC_THEME)
+                       self.run()
 
                 elif event.key == pygame.K_TAB: # Se ele pressionar TAB ele mostra o Ranking
                     print("Estou do Ranking")
@@ -186,9 +182,9 @@ class Game:
             )
         else:
             draw_message_component(
-                f"Sua Pontuação {self.score}",
+                f"Sua Pontuacao {self.score}",
                 self.screen,
-                pos_y_center=half_screen_height - 150
+                pos_y_center=half_screen_height - 150,
             )
             draw_message_component(
                 f"Contagem de Vida: {self.death_count}",

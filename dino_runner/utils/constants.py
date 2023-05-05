@@ -64,11 +64,11 @@ BIRD = [
 
 # Musicas 
 MUSIC_THEME = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/music_theme.mp3"
-JUMP = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/jump.mp3"
-EAGLE = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/eagle.mp3"
+JUMP = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/jump.wav"
+EAGLE = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/eagle.wav"
 SHIELD_SOUND = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/shield_sound.wav"
-
-
+GAME_OVER = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/game_over.wav"
+HAMMER_SOUND = "/home/eliasjunior/Documentos/Python/Project/Dino-MOD2-Elias/dino_runner/assets/Music/hammer.mp3"
 
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
@@ -81,3 +81,4 @@ HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
+HAMMER_TYPE = "hammer"

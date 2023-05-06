@@ -27,6 +27,7 @@ class Game:
         self.playing = False
         self.running = False
         self.score = 0
+        self.ranking_pos_y = 500
         self.death_count = 0
         self.game_speed = 20
         self.x_pos_bg = 1280 # Define a posição do background na tela
@@ -223,31 +224,32 @@ class Game:
         while True:
 
             #Instancia a classe Ranking - Responsavel pela requisição http na API MOCK API
-            response = Ranking()
-            data = response.get()
-            data_json = data.json()
+            #response = Ranking()
+            #data = response.get()
+
 
             # Criação da tela de Ranking 
             self.screen.fill("black")
 
             draw_message_component(
-                "Ranking",
+                "Aguarde para breve atualizacoes",
                 self.screen,
                 (255,255,255),
                 pos_y_center= 100
             )
-
-            for i in data_json:
-                for y in range(0,len(data_json)):
-                    draw_message_component(
-                        f"{i[y]}   {i[y]}",
-                        self.screen,
-                        pos_y_center= 200*y,
-                        pos_x_center= 500,
-                        font_color= (255,255,255)
-                    )
-
-
+            """
+            e = 0
+            for i in data:   
+                self.ranking_pos_y = self.ranking_pos_y 
+                draw_message_component(
+                    f"{i['name']}   {i['score']}",
+                    self.screen,
+                    pos_y_center= self.ranking_pos_y,
+                    pos_x_center= 500,
+                    font_color= (255,255,255)
+                )
+                e+=1
+            """
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

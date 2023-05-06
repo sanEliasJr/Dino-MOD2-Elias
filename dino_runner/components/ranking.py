@@ -6,7 +6,7 @@ class Ranking:
 
     def get(self):
         response = requests.get(API_URL)
-        return response
+        return response.json()
 
     def save(self,name, score):
         data = {
